@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+h1 {
+    text-align: center;
+    font-size: 50px;
+    text-decoration: none;
+    border-bottom: 3px solid black;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+}
+.html
+{
+    color: orangered;
+}
+.css
+{
+    color: blue;
+}
+.js
+{
+    color: rgb(243, 243, 11);
+    -webkit-text-stroke: 0.3px navy;
+}
+#g
+{
+display:grid;
+grid-template-columns: 150px 1fr;
+}
+#g ol { 
+    /* 웹페이지에 있는 모든 ol중에 부모가 g인 ol 만 적용 */
+    border-right: solid black 3px;
+    width: 100px;
+    margin: 0;
+    padding: 20px;
+    padding-left: 30px;
+}
+#g h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+#g div
+{
+    padding: 20px;
+}            
+@media(max-width:800px)
+{
+    #g
+    {
+        display: block;
+    }
+    #g ol
+    {
+        border-right: none;
+    }
+    h1
+    {
+        border-bottom: none;
+    }
+}

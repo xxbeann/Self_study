@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Web Index Page</title>
+        <link rel="stylesheet" href="style.css">
+        <!--웹브라우저야 style.css를 다운로드 받아서 여기에 그 코드가 있는것처럼 동작해!!-->
+    </head>
+    <body>
+        <!-- 
+        button 2개 ver
+        <input type="button" value="night" onclick="
+            document.querySelector('body').style.backgroundColor='black';
+            document.querySelector('body').style.color='white';
+            
+            var lis = document.querySelectorAll('a');
+            for(var name in lis)
+            {
+                lis[name].style.color = 'white';
+            }
+            
+            //왜 body태그로 적용하면 a태그에 관해서는 컬러가 안바뀔까?(원래있던 css따라감)
+            //링크랑 텍스트는 별개. querySelector로 접근할 때 원하는 요소 자유자재로 조절할 수 있도록 정확히 저격하는게 중요.
+            //document.querySelector('a').style.color='white';
+            //querySelector는 첫번째 요소를 반환한다. 위와같이 a태그에 관해 적용시 첫번째 a태그에만 적용된다.
+        ">
+        <input type="button" value="day" onclick="
+            document.querySelector('body').style.backgroundColor='white';
+            document.querySelector('body').style.color='black';
+            var lis = document.querySelectorAll('a');
+            
+            for(var name in lis)
+            {
+                lis[name].style.color = 'black';
+            }                
+        "> -->
+
+        <!-- 위에 두개 버튼 합치기!!!   근데 JS에서 뜨는 오류는 뭐지,,,?
+        <input id="night_day" type="button" value="night" onclick="
+            if(document.querySelector('#night_day').value === 'night')
+            {
+                document.querySelector('#night_day').value = 'day';     
+                document.querySelector('body').style.backgroundColor='black';
+                document.querySelector('body').style.color='white';
+                var lis = document.querySelectorAll('a');
+                for(var name in lis)
+                {
+                    lis[name].style.color = 'white';
+                }                           
+            }
+            else
+            {
+                document.querySelector('#night_day').value = 'night';      
+                document.querySelector('body').style.backgroundColor='white';
+                document.querySelector('body').style.color='black';
+                var lis = document.querySelectorAll('a');            
+                for(var name in lis)
+                {
+                    lis[name].style.color = 'black';
+                }                                          
+            }      
+            // 아따 어렵다잉
+        "> -->
+        <!-- 
+            최적화.(중복을 없애는게 중요하다. 하나를 바꾸면 모든게 바뀌는 폭발적인 효과)
+            document.querySelector('#night_day') onclick이벤트가 속해있는 자기자신을 가리키고 있으므로 
+            this로 표현이 가능하면서 코드가 한결 간단해진다.ID값을 쓸 필요가 없어지고 몇변이고 재사용이 가능. Refactoring
+        -->
+        <input type="button" value="night" onclick="
+            var target = document.querySelector('body');
+            if(this.value === 'night')
+            {
+                this.value = 'day';     
+                target.style.backgroundColor='black';
+                target.style.color='white';
+                var lis = document.querySelectorAll('a');
+                for(var name in lis)
+                {
+                    lis[name].style.color = 'white';
+                }                           
+            }
+            else
+            {
+                this.value = 'night';      
+                target.style.backgroundColor='white';
+                target.style.color='black';
+                var lis = document.querySelectorAll('a');            
+                for(var name in lis)
+                {
+                    lis[name].style.color = 'black';
+                }                                          
+            }      
+        ">            
+        <h1><a href="index.html">WEB</a></h1>
+        <div id="g">
+            <ol>  
+                <li><a href="1.html">HTML</a></li>
+                <li><a href="2.html">CSS</a></li>
+                <li><a href="3.html">JavaScript</a></li>
+            </ol>
+            <div>
+                <h2>Hi Wellcome to introducing page</h2>
+                <img src="coding.jpg" width="100%">
+                <p>Web is a computer programming system created by Donald E. Knuth as the first implementation of what he called "literate programming": 
+                    the idea that one could create software as works of literature, by embedding source code inside descriptive text, rather than the reverse (as is common practice in most programming languages),
+                    in an order that is convenient for exposition to human readers, rather than in the order demanded by the compiler.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
